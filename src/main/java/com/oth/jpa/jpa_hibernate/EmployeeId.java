@@ -1,11 +1,10 @@
 package com.oth.jpa.jpa_hibernate;
 
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Embeddable
+
 public class EmployeeId implements Serializable {
 
     int id;

@@ -1,1 +1,0 @@
-INSERT INTO Employee (id, firstName, lastName, job, salary) VALUES (3,'Ahmed', 'Saad', 'Manager', 95000);
