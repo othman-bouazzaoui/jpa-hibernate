@@ -8,6 +8,7 @@
     <persistence-unit name="Jpa-DB" >
         <class>package com.oth.jpa.jpa_hibernate.Employee</class>
         <class>package com.oth.jpa.jpa_hibernate.EmployeeAddress</class>
+        <class>package com.oth.jpa.jpa_hibernate.Department</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa-tuto?createDatabaseIfNotExist=true" />
             <property name="javax.persistence.jdbc.user" value="root" />

@@ -16,6 +16,18 @@ public class Employee {
 	@OneToOne(mappedBy = "employee", fetch = FetchType.LAZY, optional = true, cascade = CascadeType.ALL)
 	private EmployeeAddress address;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "department_id")
+	private Department department;
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	public EmployeeAddress getAddress() {
 		return address;
 	}
@@ -106,6 +118,7 @@ public class Employee {
 				", job='" + job + '\'' +
 				", salary=" + salary +
 				", address=" + address +
+				", department=" + department +
 				'}';
 	}
 }

@@ -20,9 +20,21 @@ public class App {
             EmployeeAddress address2 = new EmployeeAddress("0600000002","12 Xx Rabat");
             EmployeeAddress address3 = new EmployeeAddress("0600000001","12 Xx Rabat");
 
+            Department dept1 = new Department("IT");
+            Department dept2 = new Department("Finance");
+            Department dept3 = new Department("RH");
+
             Employee firstEmployee = new Employee("Othman", "BOUAZZAOUI", "Developer", 220000d, address1);
             Employee secondEmployee = new Employee("Mohamed", "Khaled", "Analyst", 120000d, address2);
             Employee thirdEmployee = new Employee("Mohamed", "Khaled", "Analyst", 120000d, address3);
+
+            firstEmployee.setDepartment(dept1);
+            secondEmployee.setDepartment(dept1);
+            thirdEmployee.setDepartment(dept3);
+
+            entityManager.persist(dept1);
+            entityManager.persist(dept2);
+            entityManager.persist(dept3);
 
             entityManager.persist(address1);
             entityManager.persist(address2);
