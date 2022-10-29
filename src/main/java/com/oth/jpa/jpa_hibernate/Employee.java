@@ -1,6 +1,8 @@
 package com.oth.jpa.jpa_hibernate;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -19,6 +21,24 @@ public class Employee {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "department_id")
 	private Department department;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "employees_projects",
+	joinColumns = {
+			@JoinColumn(name = "employee_id", referencedColumnName = "id")
+	},
+	inverseJoinColumns = {
+			@JoinColumn(name = "project_id", referencedColumnName = "id")
+	})
+	private Set<Project> projects = new HashSet<>();
+
+	public Set<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(Project project) {
+		this.projects.add(project);
+	}
 
 	public Department getDepartment() {
 		return department;
@@ -119,6 +139,7 @@ public class Employee {
 				", salary=" + salary +
 				", address=" + address +
 				", department=" + department +
+				", projects=" + projects +
 				'}';
 	}
 }
