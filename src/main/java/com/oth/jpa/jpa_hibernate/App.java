@@ -16,13 +16,25 @@ public class App {
         try {
             entityManager.getTransaction().begin();
 
-            Employee firstEmployee = new Employee(1, LocalDate.now(), "Othman", "BOUAZZAOUI", "Developer", 220000d);
-            Employee secondEmployee = new Employee(1, LocalDate.now().plusDays(1), "Mohamed", "Khaled", "Analyst", 120000d);
-            Employee thirdEmployee = new Employee(2, LocalDate.now(), "Mohamed", "Khaled", "Analyst", 120000d);
+            EmployeeAddress address1 = new EmployeeAddress("0600000000","12 Xx Rabat");
+            EmployeeAddress address2 = new EmployeeAddress("0600000002","12 Xx Rabat");
+            EmployeeAddress address3 = new EmployeeAddress("0600000001","12 Xx Rabat");
+
+            Employee firstEmployee = new Employee("Othman", "BOUAZZAOUI", "Developer", 220000d, address1);
+            Employee secondEmployee = new Employee("Mohamed", "Khaled", "Analyst", 120000d, address2);
+            Employee thirdEmployee = new Employee("Mohamed", "Khaled", "Analyst", 120000d, address3);
+
+            entityManager.persist(address1);
+            entityManager.persist(address2);
+            entityManager.persist(address3);
 
             entityManager.persist(thirdEmployee);
             entityManager.persist(firstEmployee);
             entityManager.persist(secondEmployee);
+
+            System.out.println(firstEmployee);
+            System.out.println(secondEmployee);
+            System.out.println(thirdEmployee);
 
         }catch (Exception ex){
             System.err.println(" An exception => " + ex);
