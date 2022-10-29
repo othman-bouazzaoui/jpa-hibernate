@@ -1,0 +1,1 @@
+CREATE TABLE Employee (id bigint, firstName varchar(255), lastName varchar(255), job varchar(255), salary double not null, primary key (id));
