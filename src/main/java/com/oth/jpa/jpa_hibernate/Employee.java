@@ -1,24 +1,27 @@
 package com.oth.jpa.jpa_hibernate;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Entity
 public class Employee {
 
-	@Id
-	private Long id;
+	@EmbeddedId
+	private EmployeeId idPlusDate;
 	private String firstName;
 	private String lastName;
 	private String job;
 	private Double salary;
-	
-	public Long getId() {
-		return id;
+
+	public EmployeeId getIdPlusDate() {
+		return idPlusDate;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setIdPlusDate(EmployeeId idPlusDate) {
+		this.idPlusDate = idPlusDate;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -48,12 +51,22 @@ public class Employee {
 		
 	}
 	
-	public Employee(Long id, String firstName, String lastName, String job, Double salary) {
-		this.id = id;
+	public Employee(int id, LocalDate dateEntry, String firstName, String lastName, String job, Double salary) {
+		this.idPlusDate = new EmployeeId(id, dateEntry);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.job = job;
 		this.salary = salary;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Employee{" +
+				"idPlusDate=" + idPlusDate +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", job='" + job + '\'' +
+				", salary=" + salary +
+				'}';
+	}
 }
